@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block body %}
+    <h1>Create New Entry</h1>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <form action="{% url 'new_page' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Entry Title" required><br><br>
+        <textarea name="content" rows="10" cols="50" placeholder="Write Markdown content here..." required></textarea><br><br>
+        <button type="submit">Create</button>
+    </form>
+{% endblock %}
